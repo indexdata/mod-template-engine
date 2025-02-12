@@ -13,14 +13,14 @@ jobs:
         postgres: ${{ fromJSON(github.event.inputs.postgres) }}
       fail-fast: false
     steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: true
-    - uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-        cache: maven
-    - run: mvn --batch-mode verify
-      env:
-        TESTCONTAINERS_POSTGRES_IMAGE: ${{ matrix.postgres }}
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: maven
+      - run: mvn --batch-mode verify
+        env:
+          TESTCONTAINERS_POSTGRES_IMAGE: ${{ matrix.postgres }}
